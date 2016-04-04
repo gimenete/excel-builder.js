@@ -3,9 +3,8 @@ if (typeof define !== 'function') { var define = require('amdefine')(module) }
 define([
     'require',
     'underscore',
-    './Excel/Workbook',
-    'JSZip'
-], function (require, _, Workbook, JSZip) {
+    './Excel/Workbook'
+], function (require, _, Workbook) {
 
     /**
      * @name Excel
@@ -63,19 +62,20 @@ define([
          * @param {Object} options - options to modify how the zip is created. See http://stuk.github.io/jszip/#doc_generate_options
          */
         createFile: function (workbook, options) {
-            var zip = new JSZip();
-            var files = workbook.generateFiles();
-            _.each(files, function (content, path) {
-                path = path.substr(1);
-                if(path.indexOf('.xml') !== -1 || path.indexOf('.rel') !== -1) {
-                    zip.file(path, content, {base64: false});
-                } else {
-                    zip.file(path, content, {base64: true, binary: true});
-                }
-            })
-            return zip.generate(_.defaults(options || {}, {
-                type: "base64"
-            }));
+            throw new Error('createFile() not supported in node.js');
+            // var zip = new JSZip();
+            // var files = workbook.generateFiles();
+            // _.each(files, function (content, path) {
+            //     path = path.substr(1);
+            //     if(path.indexOf('.xml') !== -1 || path.indexOf('.rel') !== -1) {
+            //         zip.file(path, content, {base64: false});
+            //     } else {
+            //         zip.file(path, content, {base64: true, binary: true});
+            //     }
+            // })
+            // return zip.generate(_.defaults(options || {}, {
+            //     type: "base64"
+            // }));
         }
     }
 
