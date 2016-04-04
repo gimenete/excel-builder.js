@@ -2,7 +2,7 @@
   "name": "excel-builder",
   "version": "1.0.0",
   "description": "An easy way of building Excel files with javascript",
-  "main": "export.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,8 +29,9 @@
     "grunt-contrib-copy": "*"
   },
   "dependencies": {
-    "underscore": "~1.6.0",
+    "amdefine": "^1.0.0",
     "jszip": "~2.1.0",
-    "requirejs": "~2.1.10"
+    "requirejs": "~2.1.10",
+    "underscore": "~1.6.0"
   }
 }

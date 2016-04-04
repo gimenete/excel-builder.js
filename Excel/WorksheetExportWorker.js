@@ -1,5 +1,6 @@
 var requireConfig;
 var worksheet;
+var postMessage = console.log.bind(console)
 console = {
     log: postMessage
 };
@@ -8,7 +9,7 @@ start = function(data) {
         worksheet = new Worksheet();
         worksheet.importData(data);
         postMessage({status: 'sharedStrings', data: worksheet.collectSharedStrings()});
-        
+
     });
 };
 
@@ -22,7 +23,7 @@ onmessage = function(event) {
                 require.config(requireConfig);
                 postMessage({status: "ready"});
                 break;
-            case "start": 
+            case "start":
                 start(data.data);
                 break;
             case "export":
@@ -34,6 +35,3 @@ onmessage = function(event) {
         }
     }
 };
-
-
-
